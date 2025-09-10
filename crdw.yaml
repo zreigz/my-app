@@ -27,5 +27,3 @@ spec:
     plural: myappws
     singular: myappw
     kind: MyAppw
-    shortNames:
-      - ma
