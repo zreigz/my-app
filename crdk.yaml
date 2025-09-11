@@ -27,3 +27,5 @@ spec:
     plural: myappks
     singular: myappk
     kind: MyAppk
+    shortNames:
+      - ma

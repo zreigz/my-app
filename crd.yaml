@@ -27,3 +27,5 @@ spec:
     plural: myapps
     singular: myapp
     kind: MyApp
+    shortNames:
+      - ma
