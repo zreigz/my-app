@@ -28,4 +28,4 @@ spec:
     singular: myappk
     kind: MyAppk
     shortNames:
-      - ma
+      - mak

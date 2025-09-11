@@ -28,4 +28,4 @@ spec:
     singular: myappw
     kind: MyAppw
     shortNames:
-      - ma
+      - maw
