@@ -1,0 +1,36 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: featuretoggles.myorg.io
+spec:
+  group: myorg.io
+  scope: Namespaced
+  names:
+    plural: featuretoggles
+    singular: featuretoggle
+    kind: FeatureToggle
+    shortNames:
+      - ftgl
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: Whether the feature is enabled
+              required: ["enabled"]
+
+---
+apiVersion: myorg.io/v1alpha1
+kind: FeatureToggle
+metadata:
+  name: dark-mode
+spec:
+  enabled: true
