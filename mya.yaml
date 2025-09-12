@@ -1,0 +1,8 @@
+apiVersion: example.com/v1
+kind: MyAppa
+metadata:
+  name: myapp-sample
+spec:
+  replicas: 2
+  image: nginx:1.25
+  port: 80
