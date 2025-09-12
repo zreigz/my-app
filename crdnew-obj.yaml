@@ -1,0 +1,12 @@
+apiVersion: myorg.io/v1alpha1
+kind: AppConfig
+metadata:
+  name: my-sample-app
+spec:
+  replicas: 3
+  image: nginx:1.25
+  env:
+    - name: APP_ENV
+      value: "production"
+    - name: LOG_LEVEL
+      value: "info"
