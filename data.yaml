@@ -1,0 +1,13 @@
+apiVersion: myorg.io/v1alpha1
+kind: DatabaseConfig
+metadata:
+  name: my-postgres-db
+spec:
+  engine: postgres
+  version: "14"
+  storage: 20Gi
+  users:
+    - username: admin
+      password: supersecret
+    - username: appuser
+      password: apppassword
