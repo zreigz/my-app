@@ -1,0 +1,39 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: messages.myorg.io
+spec:
+  group: myorg.io
+  scope: Namespaced
+  names:
+    plural: messages
+    singular: message
+    kind: Message
+    shortNames:
+      - msg
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The message text
+                author:
+                  type: string
+                  description: Who wrote the message
+              required: ["text"]
+---
+apiVersion: myorg.io/v1alpha1
+kind: Message
+metadata:
+  name: welcome-note
+spec:
+  text: "Welcome to the cluster! 🚀"
+  author: "ClusterAdmin"
