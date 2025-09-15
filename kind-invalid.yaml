@@ -1,0 +1,10 @@
+apiVersion: myorg.io/v1alpha1
+kind: Dupa
+metadata:
+  name: require-team-label
+spec:
+  description: "All pods must have a team label"
+  enforcement: enforce
+  rules:
+    - resource: pods
+      constraint: "mustHaveLabel: team"
