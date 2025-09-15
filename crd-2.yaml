@@ -1,0 +1,53 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: backupjobs.myorg.io
+spec:
+  group: myorg.io
+  scope: Namespaced
+  names:
+    plural: backupjobs
+    singular: backupjob
+    kind: BackupJob
+    shortNames:
+      - bkp
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                target:
+                  type: string
+                  description: Resource or service to back up (e.g., database, volume)
+                schedule:
+                  type: string
+                  description: Cron-style schedule for the backup job
+                storageLocation:
+                  type: string
+                  description: Where to store the backup (e.g., s3://bucket/path)
+              required: ["target", "storageLocation"]
+            status:
+              type: object
+              properties:
+                lastRun:
+                  type: string
+                  format: date-time
+                  description: Time when the backup last ran
+                success:
+                  type: boolean
+                  description: Whether the last backup succeeded
+---
+apiVersion: myorg.io/v1alpha1
+kind: BackupJob
+metadata:
+  name: nightly-db-backup
+spec:
+  target: postgres-db
+  schedule: "0 2 * * *"
+  storageLocation: s3://backups/db/nightly
